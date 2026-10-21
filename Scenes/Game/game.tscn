@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=4 uid="uid://c3c56td3gd6wo"]
+[gd_scene load_steps=27 format=4 uid="uid://c3c56td3gd6wo"]
 
+[ext_resource type="PackedScene" uid="uid://b05ch7kq4f8y5" path="res://Scenes/Player/player.tscn" id="1_oejk7"]
 [ext_resource type="Texture2D" uid="uid://jcv6faqpbfrx" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/BG Dirt1.png" id="1_ypmwd"]
 [ext_resource type="Texture2D" uid="uid://lsdwrpr2ny1c" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/BG Dirt2.png" id="2_oejk7"]
 [ext_resource type="Texture2D" uid="uid://d3ysiewv8bnpp" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/Tall Grass.png" id="3_upfqs"]
@@ -2894,6 +2895,9 @@ sources/10 = SubResource("TileSetAtlasSource_3gqeb")
 sources/11 = SubResource("TileSetAtlasSource_7pdpw")
 
 [node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_oejk7")]
+position = Vector2(20, -29)
 
 [node name="World" type="Node2D" parent="."]
 

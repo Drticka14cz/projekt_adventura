@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="Projekt adventura"
+run/main_scene="uid://c3c56td3gd6wo"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
