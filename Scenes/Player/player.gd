@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_crouching:
 		velocity.y = JUMP_VELOCITY
 	
-	if Input.is_action_just_pressed("Crouch") and is_on_floor():
+	if Input.is_action_just_pressed("Crouch"):
 		is_crouching = !is_crouching
 		if is_crouching:
 			zmensit_hitbox()
