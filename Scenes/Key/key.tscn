@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjj61vc38x8xl"]
+
+[ext_resource type="Script" uid="uid://dgyn1fikr1as7" path="res://Scenes/Key/key.gd" id="1_dwpcb"]
+[ext_resource type="Texture2D" uid="uid://xhfkb78joyce" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/Wheat.png" id="2_b7qx2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75pei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckgvi"]
+atlas = ExtResource("2_b7qx2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyshb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckgvi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Key" type="Area2D"]
+script = ExtResource("1_dwpcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_75pei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_wyshb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
