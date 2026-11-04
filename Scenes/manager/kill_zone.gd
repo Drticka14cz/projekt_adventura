@@ -7,6 +7,6 @@ func _on_body_entered(body: Node2D) -> void:
 	timer.start()
 	
 
-func _on_timer_timeout() -> void:c
+func _on_timer_timeout() -> void:
 	Game_manager.hit()
 	timer.start()

@@ -16,5 +16,7 @@ func all_keys():
 
 func hit():
 	hp -=20
+	
+	print(hp)
 	if hp <=0:
 		get_tree().reload_current_scene()
