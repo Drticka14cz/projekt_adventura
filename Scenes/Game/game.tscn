@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c3c56td3gd6wo"]
+[gd_scene load_steps=30 format=4 uid="uid://c3c56td3gd6wo"]
 
 [ext_resource type="Texture2D" uid="uid://jcv6faqpbfrx" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/BG Dirt1.png" id="1_ypmwd"]
 [ext_resource type="Texture2D" uid="uid://lsdwrpr2ny1c" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/BG Dirt2.png" id="2_oejk7"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b05ch7kq4f8y5" path="res://Scenes/Player/player.tscn" id="13_oejk7"]
 [ext_resource type="PackedScene" uid="uid://bjj61vc38x8xl" path="res://Scenes/Key/key.tscn" id="14_upfqs"]
 [ext_resource type="PackedScene" uid="uid://bf8ko0xy8u8t7" path="res://Scenes/manager/node.tscn" id="15_8e3kh"]
+[ext_resource type="PackedScene" uid="uid://cnmma4owef4pb" path="res://Scenes/manager/kill_zone.tscn" id="16_56qi8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ti5a"]
 texture = ExtResource("1_ypmwd")
@@ -2924,3 +2925,6 @@ unique_name_in_owner = true
 
 [node name="Key4" parent="." instance=ExtResource("14_upfqs")]
 position = Vector2(128, -15)
+
+[node name="Kill_zone_enemy" parent="." instance=ExtResource("16_56qi8")]
+position = Vector2(394, -12)
