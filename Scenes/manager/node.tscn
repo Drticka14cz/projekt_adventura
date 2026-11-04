@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf8ko0xy8u8t7"]
+
+[ext_resource type="Script" uid="uid://clvorxdwb6fm2" path="res://Game_manager.gd" id="1_wawii"]
+
+[node name="Game_manager" type="Node"]
+script = ExtResource("1_wawii")
