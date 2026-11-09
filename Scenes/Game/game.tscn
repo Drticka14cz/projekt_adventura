@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bf8ko0xy8u8t7" path="res://Scenes/manager/Game_manager.tscn" id="15_8e3kh"]
 [ext_resource type="PackedScene" uid="uid://cnmma4owef4pb" path="res://Scenes/manager/kill_zone.tscn" id="16_56qi8"]
 [ext_resource type="PackedScene" uid="uid://dl0xu5woxl3hs" path="res://Scenes/enemy/enemy_1.tscn" id="17_2vowc"]
+[ext_resource type="PackedScene" uid="uid://cv3otkwjpfi4b" path="res://Scenes/enemy/boss.tscn" id="18_yox4t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ti5a"]
 texture = ExtResource("1_ypmwd")
@@ -3071,3 +3072,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_yox4t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2vowc")
 value = 67.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Boss" parent="." unique_id=60842372 instance=ExtResource("18_yox4t")]
+position = Vector2(173, -105)
