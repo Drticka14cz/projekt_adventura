@@ -2898,6 +2898,12 @@ sources/9 = SubResource("TileSetAtlasSource_56h2t")
 sources/10 = SubResource("TileSetAtlasSource_3gqeb")
 sources/11 = SubResource("TileSetAtlasSource_7pdpw")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yox4t"]
+bg_color = Color(0.57254905, 0, 0.019607844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vowc"]
+bg_color = Color(0.14509805, 0.73333335, 0.023529412, 1)
+
 [node name="Game" type="Node2D" unique_id=48009339]
 
 [node name="World" type="Node2D" parent="." unique_id=739230733]
@@ -3026,10 +3032,13 @@ position = Vector2(128, -15)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1500976607]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=809280148]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=809280148]
+custom_minimum_size = Vector2(200, 25)
 offset_left = 90.0
 offset_top = -98.0
 offset_right = 260.0
 offset_bottom = -71.0
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yox4t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2vowc")
+value = 50.0
 metadata/_edit_use_anchors_ = true
