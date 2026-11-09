@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d_attack: CollisionShape2D = $Area2Dattack/CollisionShape2D_attack
 @onready var game_manager: Node = %Game_manager
+@onready var animated_sprite_2_deffect: AnimatedSprite2D = $AnimatedSprite2Deffect
 
 const SPEED = 2
 const JUMP_VELOCITY = -400.0
@@ -27,9 +28,12 @@ func attack():
 	print("Boss útočí!")
 	
 	animated_sprite_2d.play("Attack")
+	await get_tree().create_timer(0.2).timeout
+	animated_sprite_2_deffect.play("Effect")
 	collision_shape_2d_attack.set_deferred("disabled", false)
-	await get_tree().create_timer(0.8).timeout
+	await get_tree().create_timer(3).timeout
 	collision_shape_2d_attack.set_deferred("disabled", true)
+	animated_sprite_2_deffect.play("Not")
 	
 	is_attacking = false
 	if not is_dead:
@@ -78,7 +82,7 @@ func _physics_process(delta: float) -> void:
 		if direction == 0:
 			animated_sprite_2d.play("Idle")
 		else:
-			animated_sprite_2d.play("run")
+			animated_sprite_2d.play("Run")
 		
 		position.x += SPEED * direction
 		

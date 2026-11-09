@@ -217,7 +217,12 @@ animations = [{
 radius = 8.0
 height = 26.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3d8c"]
+radius = 18.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1483368849 groups=["player"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_a3d8c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=241715103]
@@ -229,3 +234,12 @@ frame_progress = 0.92106026
 [node name="Normal_colision" type="CollisionShape2D" parent="." unique_id=1086702971]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_06tpx")
+
+[node name="Area2Dattack" type="Area2D" parent="." unique_id=2131460719]
+collision_mask = 6
+
+[node name="CollisionShape2Dattack" type="CollisionShape2D" parent="Area2Dattack" unique_id=1086125037]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_a3d8c")
+
+[connection signal="body_entered" from="Area2Dattack" to="." method="_on_area_2_dattack_body_entered"]

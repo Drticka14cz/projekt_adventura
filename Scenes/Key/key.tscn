@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjj61vc38x8xl"]
+[gd_scene format=3 uid="uid://bjj61vc38x8xl"]
 
 [ext_resource type="Script" uid="uid://dgyn1fikr1as7" path="res://Scenes/Key/key.gd" id="1_dwpcb"]
 [ext_resource type="Texture2D" uid="uid://xhfkb78joyce" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/Wheat.png" id="2_b7qx2"]
@@ -15,18 +15,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ckgvi")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Key" type="Area2D"]
+[node name="Key" type="Area2D" unique_id=1684980260]
+collision_mask = 3
 script = ExtResource("1_dwpcb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1682343037]
 shape = SubResource("CircleShape2D_75pei")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1747176295]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_wyshb")
 

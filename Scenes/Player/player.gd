@@ -69,3 +69,14 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("Jump")
 			
 	move_and_slide()
+	
+	
+
+
+func _on_area_2_dattack_body_entered(body: Node2D) -> void:
+	# Zkontrolujeme, zda zasažený objekt má funkci take_damage (což boss má)
+	if body.has_method("take_damage"):
+		body.take_damage(1) # Udělíme bose 1 poškození
+		print("Hráč zasáhl bose!")
+	else:
+		print("MRD")

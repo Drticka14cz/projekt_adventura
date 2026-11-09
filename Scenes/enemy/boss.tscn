@@ -420,7 +420,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -638,6 +638,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye8rd"]
+size = Vector2(35, 94)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ye8rd"]
+radius = 56.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_udls8"]
 atlas = ExtResource("5_4n06b")
 region = Rect2(0, 128, 64, 64)
@@ -707,19 +713,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhlyv"]
+radius = 67.0
+
 [node name="Boss" type="CharacterBody2D" unique_id=60842372]
+collision_layer = 4
 script = ExtResource("1_ye8rd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=233411243]
 sprite_frames = SubResource("SpriteFrames_41uc2")
 animation = &"Run"
-frame_progress = 0.4918637
+frame_progress = 0.18452793
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1146318817]
+position = Vector2(7.5, 9)
+shape = SubResource("RectangleShape2D_ye8rd")
 
 [node name="Area2Dattack" type="Area2D" parent="." unique_id=750744059]
+collision_mask = 2
 
 [node name="CollisionShape2D_attack" type="CollisionShape2D" parent="Area2Dattack" unique_id=1620244666]
+shape = SubResource("CircleShape2D_ye8rd")
 
 [node name="AnimatedSprite2Deffect" type="AnimatedSprite2D" parent="." unique_id=52743440]
 position = Vector2(0, 34)
@@ -728,8 +742,10 @@ sprite_frames = SubResource("SpriteFrames_afu2c")
 animation = &"Not"
 
 [node name="Area2Drange" type="Area2D" parent="." unique_id=188200027]
+collision_mask = 2
 
 [node name="CollisionShape2D_range" type="CollisionShape2D" parent="Area2Drange" unique_id=526714630]
+shape = SubResource("CircleShape2D_qhlyv")
 
 [connection signal="body_entered" from="Area2Dattack" to="." method="_on_area_2_dattack_body_entered"]
 [connection signal="body_entered" from="Area2Drange" to="." method="_on_area_2_drange_body_entered"]
