@@ -2898,11 +2898,28 @@ sources/9 = SubResource("TileSetAtlasSource_56h2t")
 sources/10 = SubResource("TileSetAtlasSource_3gqeb")
 sources/11 = SubResource("TileSetAtlasSource_7pdpw")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br86b"]
+bg_color = Color(0.15294118, 0.15294118, 0.15294118, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yox4t"]
 bg_color = Color(0.57254905, 0, 0.019607844, 1)
+border_width_left = 20
+border_color = Color(0.08094155, 0.08094143, 0.07923635, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2vowc"]
 bg_color = Color(0.14509805, 0.73333335, 0.023529412, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 24
 
 [node name="Game" type="Node2D" unique_id=48009339]
 
@@ -3032,13 +3049,25 @@ position = Vector2(128, -15)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1500976607]
 
+[node name="vypln" type="ProgressBar" parent="CanvasLayer" unique_id=484321548]
+custom_minimum_size = Vector2(250, 50)
+offset_left = 20.0
+offset_top = 30.0
+offset_right = 251.0
+offset_bottom = 90.0
+theme_override_styles/background = SubResource("StyleBoxFlat_br86b")
+show_percentage = false
+
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=809280148]
-custom_minimum_size = Vector2(200, 25)
-offset_left = 90.0
-offset_top = -98.0
-offset_right = 260.0
-offset_bottom = -71.0
+custom_minimum_size = Vector2(238, 50)
+anchors_preset = -1
+anchor_right = 0.1892361
+anchor_bottom = 0.037037037
+offset_left = 26.0
+offset_top = 35.0
+offset_right = 38.0
+offset_bottom = 61.0
 theme_override_styles/background = SubResource("StyleBoxFlat_yox4t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2vowc")
-value = 50.0
+value = 67.0
 metadata/_edit_use_anchors_ = true

@@ -6,7 +6,14 @@ script/source = "extends Node
 var keys = 0
 var allKeys = false
 
+var max_hp = 100
 var hp = 100
+
+@onready var health_bar = get_node(\"../CanvasLayer/HealthBar\")
+
+func _ready():
+	health_bar.max_value = max_hp
+	health_bar.value = hp
 
 func hello():
 	print(\"Hellddo?\")
@@ -24,6 +31,8 @@ func all_keys():
 func hit():
 	print(hp)
 	hp -= 20
+	hp = max(hp, 0)
+	health_bar.value = hp
 	if hp <=0:
 		get_tree().reload_current_scene()
 "
