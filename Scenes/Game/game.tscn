@@ -18,6 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://cnmma4owef4pb" path="res://Scenes/manager/kill_zone.tscn" id="16_56qi8"]
 [ext_resource type="PackedScene" uid="uid://dl0xu5woxl3hs" path="res://Scenes/enemy/enemy_1.tscn" id="17_2vowc"]
 [ext_resource type="PackedScene" uid="uid://cv3otkwjpfi4b" path="res://Scenes/enemy/boss.tscn" id="18_yox4t"]
+[ext_resource type="Texture2D" uid="uid://dbmt3s6i7swwr" path="res://Assets/Map/Parallax/1 .png" id="19_2lc0x"]
+[ext_resource type="Texture2D" uid="uid://d2iqiije80r5q" path="res://Assets/Map/Parallax/2.png" id="20_4ti5a"]
+[ext_resource type="Texture2D" uid="uid://cnqanyccpdt4s" path="res://Assets/Map/Parallax/3.png" id="21_pmm7v"]
+[ext_resource type="Texture2D" uid="uid://bq7wycga2olm7" path="res://Assets/Map/Parallax/4.png" id="22_3gqeb"]
+[ext_resource type="Texture2D" uid="uid://bxqpidoe6c8oy" path="res://Assets/Map/Parallax/5.png" id="23_7pdpw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ti5a"]
 texture = ExtResource("1_ypmwd")
@@ -3034,6 +3039,9 @@ scale = Vector2(2, 2)
 position = Vector2(7332, -143)
 scale = Vector2(2, 2)
 
+[node name="Boss" parent="enemy" unique_id=60842372 instance=ExtResource("18_yox4t")]
+position = Vector2(173, -105)
+
 [node name="key" type="Node" parent="." unique_id=52675832]
 
 [node name="Key" parent="key" unique_id=1300315305 instance=ExtResource("14_upfqs")]
@@ -3073,5 +3081,63 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_2vowc")
 value = 67.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Boss" parent="." unique_id=60842372 instance=ExtResource("18_yox4t")]
-position = Vector2(173, -105)
+[node name="parallax background" type="Node" parent="." unique_id=341897500]
+
+[node name="Parallax2D" type="Parallax2D" parent="parallax background" unique_id=1250238257]
+z_index = -10
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(416, 416)
+repeat_times = 11
+
+[node name="Sprite2D" type="Sprite2D" parent="parallax background/Parallax2D" unique_id=2118523205]
+position = Vector2(-83, -239)
+scale = Vector2(2, 2)
+texture = ExtResource("19_2lc0x")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="parallax background" unique_id=1892102162]
+z_index = -9
+scroll_scale = Vector2(0.25, 1)
+scroll_offset = Vector2(-190, -366)
+repeat_size = Vector2(416, 416)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="parallax background/Parallax2D2" unique_id=361105764]
+scale = Vector2(2, 2)
+texture = ExtResource("20_4ti5a")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="parallax background" unique_id=513656898]
+z_index = -8
+scroll_scale = Vector2(0.45, 1)
+scroll_offset = Vector2(-190, -366)
+repeat_size = Vector2(416, 416)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="parallax background/Parallax2D3" unique_id=2105180494]
+scale = Vector2(2, 2)
+texture = ExtResource("21_pmm7v")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="parallax background" unique_id=41497514]
+z_index = -7
+scroll_scale = Vector2(0.7, 1)
+scroll_offset = Vector2(-190, -366)
+repeat_size = Vector2(416, 416)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="parallax background/Parallax2D4" unique_id=984640827]
+scale = Vector2(2, 2)
+texture = ExtResource("22_3gqeb")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="parallax background" unique_id=835636322]
+z_index = -5
+scroll_offset = Vector2(-190, -366)
+repeat_size = Vector2(416, 416)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="parallax background/Parallax2D5" unique_id=1970952928]
+scale = Vector2(2, 2)
+texture = ExtResource("23_7pdpw")
+centered = false
