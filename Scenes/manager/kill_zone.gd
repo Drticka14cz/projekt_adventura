@@ -3,9 +3,12 @@ extends Area2D
 @onready var timer: Timer = $Timer
 
 func _on_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
 	print("hit snad")
+	#timer.start()
 	game_manager.hit()
-	timer.start()
+	
 
 func _on_timer_timeout() -> void: 
 	print("timeout")
