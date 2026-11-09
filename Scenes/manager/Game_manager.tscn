@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf8ko0xy8u8t7"]
+[gd_scene format=3 uid="uid://bf8ko0xy8u8t7"]
 
 [sub_resource type="GDScript" id="GDScript_16ubp"]
 script/source = "extends Node
@@ -21,11 +21,12 @@ func all_keys():
 		print(\"Máme všechny klíče\")
 		allKeys = true
 
-func hitaaa():
+func hit():
 	print(hp)
-	#if hp <=0:
-		#get_tree().reload_current_scene()
+	hp -= 20
+	if hp <=0:
+		get_tree().reload_current_scene()
 "
 
-[node name="Game_manager" type="Node"]
+[node name="Game_manager" type="Node" unique_id=1951242146]
 script = SubResource("GDScript_16ubp")
