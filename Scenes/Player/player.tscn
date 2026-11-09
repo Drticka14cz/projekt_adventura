@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b05ch7kq4f8y5"]
+[gd_scene format=3 uid="uid://b05ch7kq4f8y5"]
 
 [ext_resource type="Script" uid="uid://dhgaraodh0la8" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://6ljj2gxw0qp3" path="res://Assets/Sprites/hero/adventurer-v1.5-Sheet.png" id="1_uvnfx"]
@@ -122,7 +122,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dey5f")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Crouch",
 "speed": 10.0
 }, {
@@ -139,7 +139,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_htcer")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 8.0
 }, {
@@ -159,7 +159,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rcvs5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Jump",
 "speed": 10.0
 }, {
@@ -182,7 +182,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_74mp2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Run",
 "speed": 10.0
 }, {
@@ -208,7 +208,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bmb2s")
 }],
-"loop": true,
+"loop": 1,
 "name": &"melee_attack",
 "speed": 10.0
 }]
@@ -217,15 +217,15 @@ animations = [{
 radius = 8.0
 height = 26.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=1483368849]
 script = ExtResource("1_a3d8c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=241715103]
 sprite_frames = SubResource("SpriteFrames_oikmp")
 animation = &"Crouch"
 autoplay = "Idle"
 frame_progress = 0.92106026
 
-[node name="Normal_colision" type="CollisionShape2D" parent="."]
+[node name="Normal_colision" type="CollisionShape2D" parent="." unique_id=1086702971]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_06tpx")
