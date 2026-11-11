@@ -62,7 +62,7 @@ func take_damage(amount: int):
 	else:
 		# Přehrání Hurt animace a krátké zablokování pohybu
 		is_attacking = true
-		animated_sprite_2d.play("Hurt")
+		#animated_sprite_2d.play("Hurt")
 		await get_tree().create_timer(0.4).timeout
 		is_attacking = false
 

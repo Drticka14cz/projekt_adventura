@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://8cu2weekrsjw"]
+[gd_scene load_steps=32 format=3 uid="uid://8cu2weekrsjw"]
 
 [ext_resource type="Script" uid="uid://hswgmmenmnbe" path="res://Scenes/Characters/heal_houba.gd" id="1_1tp15"]
 [ext_resource type="Texture2D" uid="uid://bui1bt5mpmyt0" path="res://Assets/Sprites/enemies/Mushroom without VFX/Mushroom-Stun.png" id="1_m7iul"]
@@ -195,10 +195,17 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tp15"]
+radius = 16.03122
+
 [node name="HealHouba" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_1tp15")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 12)
@@ -209,6 +216,10 @@ position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_bjauk")
 animation = &"Heal"
 autoplay = "Idle"
-frame_progress = 0.25786927
+frame_progress = 0.9367902
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 16)
+shape = SubResource("CircleShape2D_1tp15")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

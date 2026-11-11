@@ -42,7 +42,8 @@ func hit():
 		get_tree().reload_current_scene()
 		
 func heal():
-	hp = 100
+	hp = max_hp
+	health_bar.value = hp
 "
 
 [node name="Game_manager" type="Node"]
