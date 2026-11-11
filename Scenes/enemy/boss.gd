@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var sfx_boss: AudioStreamPlayer2D = $sfx_boss
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d_attack: CollisionShape2D = $Area2Dattack/CollisionShape2D_attack
 @onready var game_manager: Node = %Game_manager
@@ -42,6 +44,7 @@ func attack():
 	if is_dead: return
 	is_attacking = true
 	print("Boss útočí!")
+	sfx_boss.play()
 	
 	animated_sprite_2d.play("Attack")
 	await get_tree().create_timer(0.2).timeout
@@ -59,7 +62,7 @@ func attack():
 # Funkce, kterou zavoláš, když boss dostane ránu (např. od hráče)
 func take_damage(amount: int):
 	if is_dead: return
-	
+	sfx_boss.play()
 	current_health -= amount
 	print("Boss dostal hit! Zbývající HP: ", current_health)
 	
@@ -77,7 +80,7 @@ func die():
 	is_dead = true
 	is_attacking = true
 	collision_shape_2d_attack.set_deferred("disabled", true)
-	
+	sfx_boss.play()
 	print("Boss zemřel!")
 	animated_sprite_2d.play("Death")
 	

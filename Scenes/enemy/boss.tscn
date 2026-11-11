@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://cv3otkwjpfi4b"]
+[gd_scene load_steps=108 format=3 uid="uid://cv3otkwjpfi4b"]
 
 [ext_resource type="Texture2D" uid="uid://diyxm1a36f0lu" path="res://Assets/Sprites/enemies/free/free/smash.png" id="1_cho2y"]
 [ext_resource type="Texture2D" uid="uid://342al7moadbh" path="res://Assets/Sprites/enemies/free/free/hurt.png" id="1_sufnh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ogkh4jgg2m6" path="res://Assets/Sprites/enemies/free/free/die.png" id="2_4n06b"]
 [ext_resource type="Texture2D" uid="uid://dadd72anbnbv4" path="res://Assets/Sprites/enemies/free/free/walk.png" id="3_y8e7q"]
 [ext_resource type="Texture2D" uid="uid://ce0qfmqs0ete4" path="res://Assets/Other/Free Smoke Fx Pixel 2/Free Smoke Fx  Pixel 04.png" id="5_4n06b"]
+[ext_resource type="AudioStream" uid="uid://dwo4p71ee1jxr" path="res://Assets/sounds/Boss.wav" id="8_qhlyv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7c5y"]
 atlas = ExtResource("1_cho2y")
@@ -752,6 +753,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D_range" type="CollisionShape2D" parent="Area2Drange"]
 shape = SubResource("CircleShape2D_qhlyv")
+
+[node name="sfx_boss" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qhlyv")
 
 [connection signal="body_entered" from="Area2Dattack" to="." method="_on_area_2_dattack_body_entered"]
 [connection signal="body_entered" from="Area2Drange" to="." method="_on_area_2_drange_body_entered"]
