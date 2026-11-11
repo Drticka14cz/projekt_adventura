@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf8ko0xy8u8t7"]
+[gd_scene format=3 uid="uid://bf8ko0xy8u8t7"]
 
 [sub_resource type="GDScript" id="GDScript_16ubp"]
 script/source = "extends Node
@@ -32,6 +32,10 @@ func all_keys():
 	if keys == 3:
 		print(\"Máme všechny klíče\")
 		allKeys = true
+		return allKeys
+	else:
+		allKeys = false
+		return allKeys
 
 func hit():
 	print(hp)
@@ -46,5 +50,5 @@ func heal():
 	health_bar.value = hp
 "
 
-[node name="Game_manager" type="Node"]
+[node name="Game_manager" type="Node" unique_id=696419407]
 script = SubResource("GDScript_16ubp")

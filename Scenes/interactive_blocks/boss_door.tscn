@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xs0502eb8iiw"]
 
 [ext_resource type="Texture2D" uid="uid://cexkdxvagrwkh" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/Animated Sprites/GandalfHardcore Portal sheet.png" id="1_qe5xr"]
+[ext_resource type="Script" uid="uid://d2tv7sxtiry4h" path="res://Scenes/interactive_blocks/boss_door.gd" id="1_xaqj5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xaqj5"]
 atlas = ExtResource("1_qe5xr")
@@ -42,6 +43,10 @@ region = Rect2(512, 0, 64, 64)
 atlas = ExtResource("1_qe5xr")
 region = Rect2(576, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_df5yn"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(0, 0, 64, 6)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_afu2c"]
 animations = [{
 "frames": [{
@@ -78,6 +83,14 @@ animations = [{
 "loop": 1,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df5yn")
+}],
+"loop": 1,
+"name": &"nic",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8xxd"]
@@ -88,10 +101,11 @@ font_size = 8
 font_color = Color(0, 0, 0, 1)
 
 [node name="Boss_door" type="CharacterBody2D" unique_id=1498527634]
+script = ExtResource("1_xaqj5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1318841671]
 sprite_frames = SubResource("SpriteFrames_afu2c")
-frame_progress = 0.32720992
+animation = &"nic"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1006531019]
 
