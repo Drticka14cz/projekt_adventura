@@ -3200,4 +3200,4 @@ value = 50.0
 show_percentage = false
 
 [node name="HealHouba" parent="." instance=ExtResource("27_7pdpw")]
-position = Vector2(160, -48)
+position = Vector2(4334, -514)
