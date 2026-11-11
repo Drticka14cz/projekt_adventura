@@ -92,6 +92,6 @@ func _on_area_2_dattack_body_entered(body: Node2D) -> void:
 	if is_attacking:
 		if body.has_method("take_damage"):
 			body.take_damage(1) # Udělíme bose 1 poškození
-			print("Hráč zasáhl bose!")
+			print("Hráč zasáhl cíl!")
 	else:
 		print("MRD")

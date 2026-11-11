@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dl0xu5woxl3hs"]
+[gd_scene load_steps=29 format=3 uid="uid://dl0xu5woxl3hs"]
 
 [ext_resource type="Script" uid="uid://32ld4v6mvph6" path="res://Scenes/enemy/enemy_1.gd" id="1_njp5n"]
 [ext_resource type="Texture2D" uid="uid://cff5iaevv3n61" path="res://Assets/Sprites/enemies/Blood Monster_A/Blood Monster_A/Blood Monster_A.png" id="1_r2jtd"]
@@ -118,7 +118,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d23pt")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Attack",
 "speed": 12.0
 }, {
@@ -141,7 +141,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g8tfj")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Idle",
 "speed": 12.0
 }, {
@@ -170,7 +170,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vyyft")
 }],
-"loop": 1,
+"loop": true,
 "name": &"run",
 "speed": 12.0
 }]
@@ -184,28 +184,37 @@ size = Vector2(38, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_afu2c"]
 radius = 28.0
 
-[node name="enemy_1" type="CharacterBody2D" unique_id=629340509]
+[node name="enemy_1" type="CharacterBody2D"]
+collision_layer = 6
 script = ExtResource("1_njp5n")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=535432545]
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(-37, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(36, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wul77")
 animation = &"Attack"
 autoplay = "Attack"
 frame_progress = 0.8700053
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772338859]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -0.5)
 shape = SubResource("RectangleShape2D_njp5n")
 
-[node name="Area2Dattack" type="Area2D" parent="." unique_id=1305484099]
+[node name="Area2Dattack" type="Area2D" parent="."]
+collision_mask = 2
 
-[node name="CollisionShape2D_attack" type="CollisionShape2D" parent="Area2Dattack" unique_id=1664199790]
+[node name="CollisionShape2D_attack" type="CollisionShape2D" parent="Area2Dattack"]
 position = Vector2(2, -5)
 shape = SubResource("RectangleShape2D_afu2c")
 
-[node name="Area2Drange" type="Area2D" parent="." unique_id=1295803002]
+[node name="Area2Drange" type="Area2D" parent="."]
+collision_mask = 2
 
-[node name="CollisionShape2Drange" type="CollisionShape2D" parent="Area2Drange" unique_id=1652435273]
+[node name="CollisionShape2Drange" type="CollisionShape2D" parent="Area2Drange"]
 shape = SubResource("CircleShape2D_afu2c")
 
 [connection signal="body_entered" from="Area2Dattack" to="." method="_on_area_2_dattack_body_entered"]
