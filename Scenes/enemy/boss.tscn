@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cv3otkwjpfi4b"]
+[gd_scene load_steps=107 format=3 uid="uid://cv3otkwjpfi4b"]
 
 [ext_resource type="Texture2D" uid="uid://diyxm1a36f0lu" path="res://Assets/Sprites/enemies/free/free/smash.png" id="1_cho2y"]
 [ext_resource type="Texture2D" uid="uid://342al7moadbh" path="res://Assets/Sprites/enemies/free/free/hurt.png" id="1_sufnh"]
@@ -418,7 +418,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ckqbw")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Attack",
 "speed": 12.0
 }, {
@@ -486,7 +486,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xjxh3")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Death",
 "speed": 8.0
 }, {
@@ -545,7 +545,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pbnot")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Hurt",
 "speed": 12.0
 }, {
@@ -595,7 +595,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ty5xs")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Idle",
 "speed": 12.0
 }, {
@@ -633,7 +633,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fj1ja")
 }],
-"loop": 1,
+"loop": false,
 "name": &"Run",
 "speed": 12.0
 }]
@@ -700,7 +700,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6m7ht")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Effect",
 "speed": 5.0
 }, {
@@ -708,7 +708,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_65nwj")
 }],
-"loop": 1,
+"loop": true,
 "name": &"Not",
 "speed": 5.0
 }]
@@ -716,35 +716,41 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhlyv"]
 radius = 67.0
 
-[node name="Boss" type="CharacterBody2D" unique_id=60842372]
+[node name="Boss" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_ye8rd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=233411243]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(99, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(-90, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_41uc2")
 animation = &"Run"
 frame_progress = 0.18452793
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1146318817]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7.5, 9)
 shape = SubResource("RectangleShape2D_ye8rd")
 
-[node name="Area2Dattack" type="Area2D" parent="." unique_id=750744059]
+[node name="Area2Dattack" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D_attack" type="CollisionShape2D" parent="Area2Dattack" unique_id=1620244666]
+[node name="CollisionShape2D_attack" type="CollisionShape2D" parent="Area2Dattack"]
 shape = SubResource("CircleShape2D_ye8rd")
 
-[node name="AnimatedSprite2Deffect" type="AnimatedSprite2D" parent="." unique_id=52743440]
+[node name="AnimatedSprite2Deffect" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 34)
 scale = Vector2(1.5781249, 1.5781249)
 sprite_frames = SubResource("SpriteFrames_afu2c")
 animation = &"Not"
 
-[node name="Area2Drange" type="Area2D" parent="." unique_id=188200027]
+[node name="Area2Drange" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D_range" type="CollisionShape2D" parent="Area2Drange" unique_id=526714630]
+[node name="CollisionShape2D_range" type="CollisionShape2D" parent="Area2Drange"]
 shape = SubResource("CircleShape2D_qhlyv")
 
 [connection signal="body_entered" from="Area2Dattack" to="." method="_on_area_2_dattack_body_entered"]
