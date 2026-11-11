@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -400.0
 
 var is_crouching := false
 # Uložíme si původní shape, abychom ho mohli vrátit
+var is_attacking = false
 var original_shape: CapsuleShape2D
 func _ready() -> void:
 	original_shape = normal_colision.shape.duplicate() as CapsuleShape2D
@@ -42,6 +43,16 @@ func _physics_process(delta: float) -> void:
 			zmensit_hitbox()
 		else:
 			zvetsit_hitbox()
+	if Input.is_action_just_pressed("Attack"):
+		if not is_attacking:
+			is_attacking = true
+			animated_sprite_2d.play("melee_attack")
+			print("Utok")
+			await get_tree().create_timer(1).timeout
+			print("konec utoku")
+			is_attacking = false
+		
+		
 	
 	#Input směru
 	var direction := Input.get_axis("Left", "Right")
@@ -57,13 +68,16 @@ func _physics_process(delta: float) -> void:
 	if direction < 0:
 		animated_sprite_2d.flip_h = true
 	if is_on_floor(): #Podmínka pro animace
-		if direction == 0 and not is_crouching:
-			animated_sprite_2d.play("Idle")
+		if is_attacking:
+			animated_sprite_2d.play("melee_attack")
 		else:
-			if is_crouching:
-				animated_sprite_2d.play("Crouch")
+			if direction == 0 and not is_crouching:
+				animated_sprite_2d.play("Idle")
 			else:
-				animated_sprite_2d.play("Run")
+				if is_crouching:
+					animated_sprite_2d.play("Crouch")
+				else:
+					animated_sprite_2d.play("Run")
 			
 	else:
 		animated_sprite_2d.play("Jump")
@@ -74,9 +88,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2_dattack_body_entered(body: Node2D) -> void:
-	# Zkontrolujeme, zda zasažený objekt má funkci take_damage (což boss má)
-	if body.has_method("take_damage"):
-		body.take_damage(1) # Udělíme bose 1 poškození
-		print("Hráč zasáhl bose!")
+	# Zkontrolujeme, zda zasažený objekt má funkci take_damage (což boss má
+	if is_attacking:
+		if body.has_method("take_damage"):
+			body.take_damage(1) # Udělíme bose 1 poškození
+			print("Hráč zasáhl bose!")
 	else:
 		print("MRD")
