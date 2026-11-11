@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var game_manager: Node = %Game_manager
 @onready var wall_ray_right: RayCast2D = $RayCast2D2
 @onready var wall_ray_left: RayCast2D = $RayCast2D
+@onready var collision_shape_2_drange: CollisionShape2D = $Area2Drange/CollisionShape2Drange
+@onready var area_2_drange: Area2D = $Area2Drange
 
 const JUMP_VELOCITY = -400.0
 
@@ -84,6 +86,8 @@ func die():
 
 
 func _physics_process(delta: float) -> void:
+	
+	collision_shape_2_drange.disabled = true
 	if is_dead:
 		return
 	
@@ -127,6 +131,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0 # při útoku/hitu stojí
 			
+	collision_shape_2_drange.disabled =false
+	
+	
 	move_and_slide()
 
 

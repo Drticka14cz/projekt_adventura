@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var normal_colision: CollisionShape2D = $Normal_colision
 @onready var game_manager: Node = %Game_manager
+@onready var collision_shape_2_dattack: CollisionShape2D = $Area2Dattack/CollisionShape2Dattack
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -30,6 +31,9 @@ func zvetsit_hitbox() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	collision_shape_2_dattack.disabled = true
+	
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -82,6 +86,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite_2d.play("Jump")
 			
+	collision_shape_2_dattack.disabled = false
 	move_and_slide()
 	
 	
