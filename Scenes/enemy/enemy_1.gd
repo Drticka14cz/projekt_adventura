@@ -45,7 +45,8 @@ func attack():
 	print("attack")
 	animated_sprite_2d.play("Attack")
 	collision_shape_2d_attack.set_deferred("disabled", false)
-	await get_tree().create_timer(0.8).timeout
+	print("Čekám útok")
+	await get_tree().create_timer(1.5).timeout
 	collision_shape_2d_attack.set_deferred("disabled", true)
 	
 	is_attacking = false # Odemkneme po skončení útoku
@@ -67,7 +68,7 @@ func take_damage(amount: int):
 	else:
 		# Přehrání Hurt animace a krátké zablokování pohybu
 		is_attacking = true
-		#animated_sprite_2d.play("Hurt")
+		animated_sprite_2d.play("Hurt")
 		await get_tree().create_timer(0.4).timeout
 		is_attacking = false
 
@@ -113,10 +114,6 @@ func _physics_process(delta: float) -> void:
 			(direction < 0 and wall_ray_left.is_colliding())
 		
 		if is_on_wall():
-			print("WALL")
-			print("DIR:", direction)
-			print("RIGHT:", wall_ray_right.is_colliding())
-			print("LEFT:", wall_ray_left.is_colliding())
 			direction *= -1
 			var dist := randf_range(min_patrol_distance, max_patrol_distance)
 			target_x = global_position.x + dist * direction
@@ -125,7 +122,7 @@ func _physics_process(delta: float) -> void:
 			_pick_new_target()
 		
 		velocity.x = patrol_speed * direction
-		if direction == 0:
+		if direction == 0 or player_in_range:
 			animated_sprite_2d.play("Idle")
 		else:
 			animated_sprite_2d.play("run")
@@ -134,7 +131,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0 # při útoku/hitu stojí
 			
-	if player_in_range and !is_attacking:
+	if player_in_range and not is_attacking:
+		is_attacking = true
+		
+		var random_delay = randf_range(0.5, 2.5)
+		print("random delay pred utokem", random_delay)
+		await get_tree().create_timer(random_delay).timeout
 		attack()
 	
 	
@@ -148,7 +150,10 @@ func _on_area_2_drange_body_entered(body: Node2D) -> void:
 	# Spustíme útok pouze pokud už nějaký neprobíhá
 	if not is_attacking:
 		print("vlezl do zony")
-		attack()
+		#var random_delay = randf_range(0.3, 2)
+		#print("random delay", random_delay)
+		#await get_tree().create_timer(random_delay).timeout
+		#attack()
 
 
 func _on_area_2_dattack_body_entered(body: Node2D) -> void:

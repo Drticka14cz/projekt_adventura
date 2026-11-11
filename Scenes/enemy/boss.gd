@@ -123,7 +123,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0 # při útoku/hitu stojí
 	
-	if player_in_range:
+	if player_in_range and not is_attacking:
+		is_attacking = true
+		var random_delay = randf_range(0.3, 1.5)
+		await get_tree().create_timer(random_delay).timeout
 		attack()
 	move_and_slide()
 
@@ -134,10 +137,11 @@ func _on_area_2_drange_body_entered(body: Node2D) -> void:
 	
 	player_in_range = true
 	if not is_attacking:
-		var random_delay = randf_range(0.2, 0.8)
+		is_attacking = true
+		var random_delay = randf_range(0.3, 1.5)
 		await get_tree().create_timer(random_delay).timeout
 		
-		if not is_attacking and not is_dead and is_instance_valid(body):
+		if not is_dead and is_instance_valid(body):
 			attack()
 
 

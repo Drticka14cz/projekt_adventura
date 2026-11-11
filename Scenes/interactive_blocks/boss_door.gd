@@ -12,10 +12,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("bossdoor")
+
 	animated_sprite_2d.play("default")
 	allkeys = game_manager.all_keys()
-	print("klice", allkeys)
+	
 	if allkeys:
 		collision_shape_2d.disabled = true
 		animated_sprite_2d.play("nic")
