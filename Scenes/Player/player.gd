@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var normal_colision: CollisionShape2D = $Normal_colision
-
+@onready var game_manager: Node = %Game_manager
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -85,7 +85,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
-
+func heal(hp):
+	print("heal", hp)
+	game_manager.heal()
 
 func _on_area_2_dattack_body_entered(body: Node2D) -> void:
 	# Zkontrolujeme, zda zasažený objekt má funkci take_damage (což boss má

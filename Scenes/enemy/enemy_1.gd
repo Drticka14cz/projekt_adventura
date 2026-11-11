@@ -78,7 +78,6 @@ func die():
 	# Vypneme kolize, aby hráč mohl projít skrz mrtvého enemy
 	set_deferred("collision_layer", 0)
 	set_deferred("collision_mask", 0)
-	
 	# Počkáme, než skončí animace smrti, a pak enemy odstraníme ze scény
 	await get_tree().create_timer(2.1).timeout
 	queue_free()
@@ -95,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	# Pokud zrovna neútočí ani nedostává hit, tak chodí
 	if not is_attacking:
 		# Pohyb přes velocity, aby fungoval move_and_slide a kolize
-		velocity.x = patrol_speed * direction
+		
 		
 		var reached_target := (
 			(direction > 0 and global_position.x >= target_x) or
@@ -106,9 +105,19 @@ func _physics_process(delta: float) -> void:
 		var hit_wall := (direction > 0 and wall_ray_right.is_colliding()) or \
 			(direction < 0 and wall_ray_left.is_colliding())
 		
-		if reached_target or hit_wall:
+		if hit_wall:
+			print("WALL")
+			print("DIR:", direction)
+			print("RIGHT:", wall_ray_right.is_colliding())
+			print("LEFT:", wall_ray_left.is_colliding())
+			direction *= -1
+			var dist := randf_range(min_patrol_distance, max_patrol_distance)
+			target_x = global_position.x + dist * direction
+
+		elif reached_target:
 			_pick_new_target()
 		
+		velocity.x = patrol_speed * direction
 		if direction == 0:
 			animated_sprite_2d.play("Idle")
 		else:
