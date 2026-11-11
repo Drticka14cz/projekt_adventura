@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://cnqanyccpdt4s" path="res://Assets/Map/Parallax/3.png" id="21_pmm7v"]
 [ext_resource type="Texture2D" uid="uid://bq7wycga2olm7" path="res://Assets/Map/Parallax/4.png" id="22_3gqeb"]
 [ext_resource type="Texture2D" uid="uid://bxqpidoe6c8oy" path="res://Assets/Map/Parallax/5.png" id="23_7pdpw"]
-[ext_resource type="AudioStream" uid="uid://8ms7x8mdnqs3" path="res://Assets/sounds/mideval_2.wav" id="26_3gqeb"]
 [ext_resource type="PackedScene" uid="uid://8cu2weekrsjw" path="res://Scenes/Characters/heal_houba.tscn" id="27_7pdpw"]
 [ext_resource type="PackedScene" uid="uid://xs0502eb8iiw" path="res://Scenes/interactive_blocks/boss_door.tscn" id="27_gqd4u"]
 
@@ -2969,7 +2968,6 @@ volume_db = 4.039
 position = Vector2(4334, -514)
 
 [node name="sfx_background" type="AudioStreamPlayer2D" parent="." unique_id=1417911245]
-stream = ExtResource("26_3gqeb")
 autoplay = true
 
 [node name="Game_manager" parent="." unique_id=960263325 instance=ExtResource("15_8e3kh")]
@@ -3074,16 +3072,16 @@ position = Vector2(10436, -1395)
 [node name="key" type="Node" parent="." unique_id=1103285464]
 
 [node name="Key" parent="key" unique_id=498290687 instance=ExtResource("14_upfqs")]
-position = Vector2(7847, -463)
+position = Vector2(-48, -16)
 
 [node name="Key2" parent="key" unique_id=440235547 instance=ExtResource("14_upfqs")]
-position = Vector2(4803, -158)
+position = Vector2(-102, -21)
 
 [node name="Key3" parent="key" unique_id=1720941319 instance=ExtResource("14_upfqs")]
-position = Vector2(9504, -642)
+position = Vector2(-145, -16)
 
 [node name="Key4" parent="key" unique_id=1961333424 instance=ExtResource("14_upfqs")]
-position = Vector2(-1031, -6)
+position = Vector2(-192, -17)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=282129894]
 

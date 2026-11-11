@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var normal_colision: CollisionShape2D = $Normal_colision
 @onready var game_manager: Node = %Game_manager
 @onready var collision_shape_2_dattack: CollisionShape2D = $Area2Dattack/CollisionShape2Dattack
+@onready var sfx_slash: AudioStreamPlayer2D = $sfx_slash
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -51,6 +52,7 @@ func _physics_process(delta: float) -> void:
 		if not is_attacking:
 			is_attacking = true
 			animated_sprite_2d.play("melee_attack")
+			sfx_slash.play()
 			print("Utok")
 			await get_tree().create_timer(1).timeout
 			print("konec utoku")
@@ -73,7 +75,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = true
 	if is_on_floor(): #Podmínka pro animace
 		if is_attacking:
-			animated_sprite_2d.play("melee_attack")
+			if animated_sprite_2d.animation != "melee_attack":
+				animated_sprite_2d.play("melee_attack")
 		else:
 			if direction == 0 and not is_crouching:
 				animated_sprite_2d.play("Idle")

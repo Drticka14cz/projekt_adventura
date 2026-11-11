@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var sfx_enemy: AudioStreamPlayer2D = $sfx_enemy
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d_attack: CollisionShape2D = $Area2Dattack/CollisionShape2D_attack
@@ -58,6 +59,8 @@ func take_damage(amount: int):
 	
 	current_health -= amount
 	print("Enemy dostal hit! Zbývající HP: ", current_health)
+	
+	sfx_enemy.play()
 	
 	if current_health <= 0:
 		die()
