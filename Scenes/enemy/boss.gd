@@ -16,6 +16,7 @@ const JUMP_VELOCITY = -400.0
 
 @export var max_health: int = 5 # Počet životů bose
 
+var player_in_range = false
 var direction = 1
 var is_attacking = false
 var is_dead = false # Pojistka, aby mrtvý boss nic nedělal
@@ -111,7 +112,7 @@ func _physics_process(delta: float) -> void:
 		var hit_wall := (direction > 0 and wall_ray_right.is_colliding()) or (direction < 0 and wall_ray_left.is_colliding())
 		
 		
-		if reached_target or hit_wall:
+		if reached_target or hit_wall or is_on_wall():
 			_pick_new_target()
 		
 		if direction == 0:
@@ -122,14 +123,17 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = direction < 0
 	else:
 		velocity.x = 0 # při útoku/hitu stojí
-			
+	
+	if player_in_range:
+		attack()
 	move_and_slide()
 
 
 func _on_area_2_drange_body_entered(body: Node2D) -> void:
 	if is_dead or not body.is_in_group("player"):
 		return
-		
+	
+	player_in_range = true
 	if not is_attacking:
 		var random_delay = randf_range(0.2, 0.8)
 		await get_tree().create_timer(random_delay).timeout
@@ -141,3 +145,10 @@ func _on_area_2_drange_body_entered(body: Node2D) -> void:
 func _on_area_2_dattack_body_entered(body: Node2D) -> void:
 	if not is_dead and body.is_in_group("player"):
 		game_manager.hit()
+
+
+
+func _on_area_2_drange_body_exited(body: Node2D) -> void:
+	if is_dead or not body.is_in_group("player"):
+		return
+	player_in_range = false

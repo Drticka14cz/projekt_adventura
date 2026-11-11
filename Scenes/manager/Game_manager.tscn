@@ -29,7 +29,7 @@ func add_key():
 	print(keys)
 	
 func all_keys():
-	if keys == 3:
+	if keys >= 4:
 		print(\"Máme všechny klíče\")
 		allKeys = true
 		return allKeys
