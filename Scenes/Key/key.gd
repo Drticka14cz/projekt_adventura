@@ -4,7 +4,7 @@ extends Area2D
 
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	print("Coin")
 	game_manager.add_key()
 	queue_free() #pak nahradit za animationplayer kvuli zvukum, queue free zatim facha
