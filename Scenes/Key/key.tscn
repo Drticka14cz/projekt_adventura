@@ -2,12 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dgyn1fikr1as7" path="res://Scenes/Key/key.gd" id="1_dwpcb"]
 [ext_resource type="Texture2D" uid="uid://xhfkb78joyce" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/Wheat.png" id="2_b7qx2"]
+[ext_resource type="Texture2D" uid="uid://75sk4nbww1km" path="res://Assets/Sprites/Characters/NPC Merchant-icons-all animations.png" id="3_75pei"]
+[ext_resource type="AudioStream" uid="uid://c65vonwufkqcp" path="res://Assets/sounds/Coin Flip_3.wav" id="3_b7qx2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75pei"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckgvi"]
 atlas = ExtResource("2_b7qx2")
 region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyshb"]
+atlas = ExtResource("3_75pei")
+region = Rect2(192, 96, 64, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyshb"]
 animations = [{
@@ -17,6 +23,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyshb")
+}],
+"loop": 1,
+"name": &"nothing",
 "speed": 5.0
 }]
 
@@ -30,5 +44,9 @@ shape = SubResource("CircleShape2D_75pei")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1747176295]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_wyshb")
+
+[node name="sfx_coin" type="AudioStreamPlayer2D" parent="." unique_id=1930276262]
+stream = ExtResource("3_b7qx2")
+volume_db = 7.135
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
