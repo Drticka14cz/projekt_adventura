@@ -218,7 +218,7 @@ radius = 8.0
 height = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3d8c"]
-radius = 18.0
+radius = 27.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1820931040 groups=["player"]]
 collision_layer = 2
@@ -229,6 +229,7 @@ script = ExtResource("1_a3d8c")
 sprite_frames = SubResource("SpriteFrames_oikmp")
 animation = &"melee_attack"
 autoplay = "Idle"
+frame_progress = 0.83194464
 
 [node name="Normal_colision" type="CollisionShape2D" parent="." unique_id=610506202]
 position = Vector2(0, 5)

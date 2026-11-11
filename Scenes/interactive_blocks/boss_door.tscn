@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://xs0502eb8iiw"]
+
+[ext_resource type="Texture2D" uid="uid://cexkdxvagrwkh" path="res://Assets/Map/GandalfHardcore FREE Platformer Assets/GandalfHardcore FREE Platformer Assets/Animated Sprites/GandalfHardcore Portal sheet.png" id="1_qe5xr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaqj5"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjfef"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa54g"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag6xk"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx2y8"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aonil"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlpdk"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk1eb"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni45o"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41vfh"]
+atlas = ExtResource("1_qe5xr")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afu2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaqj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjfef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa54g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag6xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx2y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aonil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlpdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk1eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni45o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41vfh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8xxd"]
+size = Vector2(62, 55)
+
+[sub_resource type="LabelSettings" id="LabelSettings_afu2c"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="Boss_door" type="CharacterBody2D" unique_id=1498527634]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1318841671]
+sprite_frames = SubResource("SpriteFrames_afu2c")
+frame_progress = 0.32720992
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1006531019]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1571426749]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_b8xxd")
+
+[node name="Label" type="Label" parent="." unique_id=180811665]
+offset_left = -154.0
+offset_top = -37.0
+offset_right = -19.0
+offset_bottom = -21.0
+text = "Přines mi peníze... pak tě pustím...."
+label_settings = SubResource("LabelSettings_afu2c")

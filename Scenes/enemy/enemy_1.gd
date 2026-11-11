@@ -21,7 +21,7 @@ var is_attacking = false
 var is_dead = false # Pojistka, aby mrtvý enemy nic nedělal
 var current_health: int
 var target_x: float
-
+var player_in_range = false
 @onready var base_position: float = global_position.x
 
 
@@ -87,7 +87,7 @@ func die():
 
 func _physics_process(delta: float) -> void:
 	
-	collision_shape_2_drange.disabled = true
+	
 	if is_dead:
 		return
 	
@@ -109,7 +109,7 @@ func _physics_process(delta: float) -> void:
 		var hit_wall := (direction > 0 and wall_ray_right.is_colliding()) or \
 			(direction < 0 and wall_ray_left.is_colliding())
 		
-		if hit_wall:
+		if is_on_wall():
 			print("WALL")
 			print("DIR:", direction)
 			print("RIGHT:", wall_ray_right.is_colliding())
@@ -131,7 +131,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0 # při útoku/hitu stojí
 			
-	collision_shape_2_drange.disabled =false
+	if player_in_range and !is_attacking:
+		attack()
 	
 	
 	move_and_slide()
@@ -140,7 +141,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_2_drange_body_entered(body: Node2D) -> void:
 	if is_dead or not body.is_in_group("player"):
 		return
-		
+	player_in_range = true
 	# Spustíme útok pouze pokud už nějaký neprobíhá
 	if not is_attacking:
 		print("vlezl do zony")
@@ -150,3 +151,9 @@ func _on_area_2_drange_body_entered(body: Node2D) -> void:
 func _on_area_2_dattack_body_entered(body: Node2D) -> void:
 	if not is_dead and body.is_in_group("player"):
 		game_manager.hit()
+
+
+func _on_area_2_drange_body_exited(body: Node2D) -> void:
+	if is_dead or not body.is_in_group("player"):
+		return
+	player_in_range = false
