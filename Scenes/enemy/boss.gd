@@ -45,7 +45,6 @@ func attack():
 	if is_dead: return
 	is_attacking = true
 	print("Boss útočí!")
-	sfx_boss.play()
 	
 	animated_sprite_2d.play("Attack")
 	await get_tree().create_timer(0.2).timeout
