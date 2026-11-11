@@ -43,7 +43,7 @@ func hit():
 	hp = max(hp, 0)
 	health_bar.value = hp
 	if hp <=0:
-		get_tree().reload_current_scene()
+		get_tree().call_deferred(\"reload_current_scene\")
 		
 func heal():
 	hp = max_hp
