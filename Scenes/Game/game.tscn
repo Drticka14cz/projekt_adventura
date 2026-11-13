@@ -3069,7 +3069,11 @@ position = Vector2(7332, -143)
 scale = Vector2(2, 2)
 
 [node name="Boss" parent="enemy" instance=ExtResource("18_yox4t")]
+<<<<<<< HEAD
 position = Vector2(10475, -1409)
+=======
+position = Vector2(10439, -1390)
+>>>>>>> fd2cbfd84d555415a2b06f5856b9ca27d616863c
 
 [node name="key" type="Node" parent="."]
 

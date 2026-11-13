@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2_deffect: AnimatedSprite2D = $AnimatedSprite2Deffect
 @onready var wall_ray_right: RayCast2D = $RayCast2D # RayCast2D směrovaný dopředu (např. target_position = (40, 0))
 @onready var wall_ray_left: RayCast2D = $RayCast2D2
+@onready var label: Label = $Label
 const JUMP_VELOCITY = -400.0
 
 @export var min_patrol_distance: float = 80.0
@@ -82,6 +83,7 @@ func die():
 	collision_shape_2d_attack.set_deferred("disabled", true)
 	sfx_boss.play()
 	print("Boss zemřel!")
+	label.text = "Vyhrál jsi"
 	animated_sprite_2d.play("Death")
 	
 	# Počkáme, než skončí animace smrti, a pak bose odstraníme ze scény

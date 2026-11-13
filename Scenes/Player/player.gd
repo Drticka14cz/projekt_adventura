@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var collision_shape_2_dattack: CollisionShape2D = $Area2Dattack/CollisionShape2Dattack
 @onready var sfx_slash: AudioStreamPlayer2D = $sfx_slash
 
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
