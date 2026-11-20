@@ -83,7 +83,7 @@ func die():
 	collision_shape_2d_attack.set_deferred("disabled", true)
 	sfx_boss.play()
 	print("Boss zemřel!")
-	label.text = "Vyhrál jsi"
+	Label.text = "Vyhrál jsi"
 	animated_sprite_2d.play("Death")
 	
 	# Počkáme, než skončí animace smrti, a pak bose odstraníme ze scény
